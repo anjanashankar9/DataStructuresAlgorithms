@@ -19,6 +19,19 @@ public class SLL {
         return node;
     }
 
+    ListNode reverseListRecursive(ListNode node) {
+        if (node == null)
+            return node;
+
+        if(node.next == null)
+            return node;
+
+        ListNode n = reverseListRecursive(node.next);
+        node.next.next = node;
+        node.next = null;
+        return n;
+    }
+
     ListNode createList() {
 
         ListNode node5 = new ListNode(5);
@@ -36,6 +49,9 @@ public class SLL {
         printList(sll.head);
 
         sll.reverseList(sll.head);
+        printList(sll.head);
+
+        sll.head = sll.reverseListRecursive(sll.head);
         printList(sll.head);
     }
 
